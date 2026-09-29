@@ -22,36 +22,50 @@ assets/
 
 ---
 
-## Publish it on GitHub Pages
+## How this repo is published
 
-1. **Create the repository.** On GitHub, create a new repository (public, or private on a paid
-   plan — Pages needs public repos on free accounts). Do not add a README, `.gitignore` or
-   licence; you are uploading your own files.
-2. **Push these files to `main`.** From inside this folder:
+**Live:** <https://luapearth.com/bunnyclock/>
 
-   ```bash
-   git init -b main
-   git add .
-   git commit -m "BunnyClock website"
-   git remote add origin git@github.com:YOUR-USER/YOUR-REPO.git
-   git push -u origin main
-   ```
+The custom domain `luapearth.com` is set on the account's user site (`luapearth/luapearth.github.io`),
+so **every** `luapearth.github.io` URL redirects there — including this project site.
+`https://luapearth.github.io/bunnyclock/` therefore 301-redirects to
+`https://luapearth.com/bunnyclock/`, and that custom-domain address is the one to use everywhere
+(canonical tag, Play Console, social posts).
 
-   The files must sit at the **root** of the repository (`index.html` at the top level, not inside
-   a sub-folder). Keep the `.nojekyll` file — without it, GitHub Pages skips some files.
-3. **Turn Pages on.** Repository → **Settings** → **Pages** → *Build and deployment* → Source:
-   **Deploy from a branch**, Branch: **main**, folder: **/ (root)**. Save.
-4. **Wait for the URL.** A minute or two later the site is live at
-   `https://YOUR-USER.github.io/YOUR-REPO/`. Reload the Pages settings page to see the link.
-5. **Paste the privacy URL into Play Console.** Use
-   `https://YOUR-USER.github.io/YOUR-REPO/privacy.html` as the *Privacy Policy URL* in the Google
-   Play Console listing. (Until the app is published, the “Get it on Google Play” links show a
-   “not found” message from Play — that is expected.)
-6. **Optional: a custom domain.** In **Settings → Pages → Custom domain** add your domain. GitHub
-   writes a `CNAME` file into the repo for you; keep it. Add the DNS records GitHub shows you, and
-   tick *Enforce HTTPS* once DNS has propagated. If the site moves from
-   `YOUR-USER.github.io/YOUR-REPO/` to the bare domain, the relative links keep working — no edits
-   needed.
+| Thing | Value |
+|---|---|
+| Repository | `luapearth/bunnyclock` (public) |
+| Push remote | `git@github-bunnyclock:luapearth/bunnyclock.git` |
+| Access | repo-scoped SSH **deploy key** with write access enabled |
+| Pages source | **`gh-pages` branch** — see the warning below |
+| Privacy policy URL | `https://luapearth.com/bunnyclock/privacy.html` |
+
+⚠️ **Pages is built from `gh-pages`, not `main`.** Pushing a `gh-pages` branch is what switched
+Pages on for this repo. It matters because GitHub's web editor ("Edit this file") edits `main`, the
+default branch — so a web-editor change will **not** appear on the site. Until this is switched,
+every update must be pushed to **both** branches.
+
+**Recommended once**, in the repo: **Settings → Pages → Build and deployment → Source: Deploy from
+a branch → Branch: `main` / `/ (root)` → Save.** After that, `main` alone publishes the site and
+the `gh-pages` branch can be deleted so there is only one place to edit.
+
+### Publishing an update
+
+```bash
+cd bunnyclock            # this folder
+git add -A && git commit -m "Describe the change"
+git push origin main
+git push origin main:gh-pages   # not needed once the source is main/(root)
+```
+
+GitHub rebuilds in about 30–60 seconds. Pages caches assets for up to 10 minutes, so a
+hard-refresh (or `?v=2` on the URL) may be needed to see a change.
+
+### Installing the deploy key on a new machine
+
+The key lives outside the repo and is never committed. On another machine: generate a new keypair,
+`ssh-keygen -t ed25519`, paste the `.pub` into **Settings → Deploy keys → Add deploy key** with
+*Allow write access* ticked, and add a `Host` alias in `~/.ssh/config` pointing at it.
 
 ## Before you launch — check these values
 
@@ -69,17 +83,15 @@ change it quickly.
 If any of those should be a placeholder instead, replace the text in both files — the values are
 plain text, not variables.
 
-### Two things to edit after the first deploy
+### Already done after the first deploy
 
-- **Canonical URL.** In the `<head>` of `index.html` there is a commented-out `<link
-  rel="canonical">`. Uncomment it and put in your real URL, e.g.
-  `https://YOUR-USER.github.io/YOUR-REPO/`.
-- **Open Graph image.** The `og:image` / `twitter:image` tags use the **relative** path
-  `assets/feature-graphic-1024x500.png` so the site works from any folder. Most social networks
-  prefer an **absolute** URL: after the first deploy, change both tags to
-  `https://YOUR-USER.github.io/YOUR-REPO/assets/feature-graphic-1024x500.png`. Then paste the page
-  URL into the [Facebook sharing debugger](https://developers.facebook.com/tools/debug/) or
-  [X card validator](https://cards-dev.twitter.com/validator) to refresh the cached preview.
+- **Canonical URL.** `index.html` carries `<link rel="canonical" href="https://luapearth.com/bunnyclock/" />`.
+  Change it if the site ever moves to a different address.
+- **Open Graph image.** `og:image` and `twitter:image` now use the **absolute** URL
+  `https://luapearth.com/bunnyclock/assets/feature-graphic-1024x500.png`, so social networks can
+  fetch it. If you change the feature graphic, paste the page URL into the
+  [Facebook sharing debugger](https://developers.facebook.com/tools/debug/) or the
+  [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) to refresh the cached preview.
 
 ## Other things worth knowing
 
@@ -103,6 +115,16 @@ plain text, not variables.
 - **Editing colours.** All brand colours, radii and shadows are CSS custom properties at the top of
   `assets/site.css`. Changing `--teal` there updates every button, link and accent on all three
   pages.
+- **Cloudflare rewrites the HTML (worth knowing).** `luapearth.com` sits behind Cloudflare, and its
+  *Scrape Shield → Email Address Obfuscation* setting rewrites every `mailto:` link on the page
+  into a `/cdn-cgi/l/email-protection#…` link and injects Cloudflare's own
+  `/cdn-cgi/scripts/…/email-decode.min.js` into each page. The page is designed to be script-free,
+  and without JavaScript the Contact link shows `[email protected]` and goes nowhere. To keep the
+  shipped HTML exactly as it is in this repo, turn that setting off in the Cloudflare dashboard.
+- **HTTPS.** `https://luapearth.github.io/bunnyclock/` redirects to `http://luapearth.com/bunnyclock/`
+  — the redirect lands on plain HTTP. HTTPS itself works on the custom domain (Cloudflare's
+  certificate is valid), so the fix is a Cloudflare setting: **SSL/TLS → Edge Certificates → Always
+  Use HTTPS = on**. Also tick *Enforce HTTPS* on the Pages custom-domain screen if it is offered.
 
 ## Not included, on purpose
 
@@ -112,7 +134,8 @@ party to see your visitors — decide that deliberately.
 
 ## What was checked before handing this over
 
-Measured on this build, served locally over http:
+Measured on this build — first locally over http, then again on the deployed site — and re-measured
+after the video poster and canonical changes:
 
 - **Lighthouse** — `index.html`: Performance **98**, Accessibility **100**, Best Practices **100**,
   SEO **100**. `privacy.html`: 98 / 100 / 100 / 100.
@@ -122,6 +145,10 @@ Measured on this build, served locally over http:
   errors or failed requests.
 - **Video** — plays in both aspect-ratio modes with the matching poster; never autoplays.
 - **Motion** — with `prefers-reduced-motion: reduce`, no content is left hidden.
+- **Deployed site** — the same checks run against `https://luapearth.com/bunnyclock/`: 320/360/768/1280 px
+  clean, all images and fonts load, the video picks the 16:9 or 9:16 cut per breakpoint, no console
+  errors. The only network artifact is a cancelled request for the 16:9 poster on phones (the
+  poster is swapped for the vertical one as the page loads).
 
 Two things still worth a human eye:
 
