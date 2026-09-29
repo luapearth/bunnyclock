@@ -1,168 +1,170 @@
 # BunnyClock website
 
-The marketing site for **BunnyClock**, an Android attendance app for young students. It is a
-plain static site — HTML, one CSS file and a little vanilla JavaScript. No build step, no npm, no
-trackers, no cookies, no analytics. The only external link on the page is the Google Play
-listing.
+A plain HTML/CSS website ready for GitHub Pages. There is no build step, framework, npm dependency, analytics, cookie or tracker. Roboto and every image/video are served locally. The small inline script only tidies the native mobile menu; navigation and FAQs also work without JavaScript.
 
+## Publish on GitHub Pages
+
+1. Create a GitHub repository. Copy **the contents of this folder**, including the empty `.nojekyll` file, into the repository root. Do not put the surrounding Website Kit or original assets into the published repository.
+2. Commit and push these files to the `main` branch.
+3. Open the repository’s **Settings › Pages**. Choose **Deploy from a branch**, then **main** and **/ (root)**. Save.
+4. Wait for GitHub to show your published URL: `https://<user>.github.io/<repo>/`.
+5. Use `https://<user>.github.io/<repo>/privacy.html` as the **Privacy Policy URL** in Google Play Console.
+6. Fill in the placeholders below before launch. After deploying, check the published links, video and Google Play listing.
+7. Optional: configure a custom domain in Settings › Pages, configure its DNS, and add a `CNAME` file at the repository root containing only your domain. Keep all page and asset links relative.
+
+## Contact details and remaining placeholders
+
+Support email is **jpgdm24@gmail.com**, including all footer links and the privacy-policy contact link. The privacy-policy publisher is **John Paul Del Mundo**. These details have been filled in.
+
+| Placeholder | Where | What to change |
+| --- | --- | --- |
+| `[your site URL]` | Commented canonical link in the `<head>` of all three HTML pages | Replace with the complete deployed origin and repository path, with no final slash; then uncomment the canonical tag. The homepage may use the trailing-slash URL instead of `index.html`. The 404 canonical is optional and can be removed. |
+| `<user>`, `<repo>` | Example URLs in this README | Substitute your GitHub username/organization and repository name. |
+
+The two social-image references in `index.html` (`og:image` and `twitter:image`) deliberately use `assets/feature-graphic-1024x500.png`. After the first deploy, replace both with the absolute image URL, for example `https://<user>.github.io/<repo>/assets/feature-graphic-1024x500.png`, so sharing crawlers can resolve them reliably. Those are deployment values, not third-party assets.
+
+## What to review before launch
+
+- All Google Play buttons point to `https://play.google.com/store/apps/details?id=com.luapearth.bunnyclock`. The link becomes useful once the app is published. Confirm the listing is live before announcing the site.
+- Free stays free forever. Pro is **$4.99/month**, billed through Google Play and cancellable there. Ultimate is **$8.99/month, Coming soon** with no purchase button. Cloud sync and backup are **not available**; keep that distinction explicit in any edits.
+- The privacy policy was restyled from the supplied `assets/privacy.html`. Its sections and disclosures were retained, including the effective date, **September 29, 2026**, and the Google ML Kit diagnostic-data disclosure. The contact email is jpgdm24@gmail.com and the publisher is John Paul Del Mundo, as confirmed by the owner.
+- Have the publisher check that the policy still describes the shipping app. In particular, reconcile the supplied “no tracking” product statement with the supplied disclosure that ML Kit may send Google limited device/app diagnostics. Do not silently remove that disclosure. This site does not perform those requests.
+- All students in the screenshots are fictional. The camera screenshot remains masked exactly as provided.
+- The privacy policy preserves two user-activated source links to Google’s ML Kit disclosure and Google’s privacy policy. They do not load external resources. All pages make zero external requests while being viewed; Google Play and policy reference pages open only when their links are activated.
+- The supplied video is unchanged. It plays only after the visitor starts it, using native controls. Its poster is local and `preload="none"` avoids downloading the MP4 during normal page loading.
+
+## Files and editing
+
+- `index.html`: landing-page content, prices, FAQ, SEO/sharing tags, and the small mobile-menu script.
+- `privacy.html`: privacy policy and publisher/contact details.
+- `404.html`: friendly missing-page screen and relative home link.
+- `assets/style.css`: shared styles, exact brand tokens, self-hosted font declarations and responsive layouts. Light theme only. Reduced-motion preferences are respected.
+- `assets/screens/`: seven optimized WebP screenshots, 720 × 1607, preserving the original full screen. No unused PNG fallbacks.
+- `assets/icons/`: only the supplied logo and favicons used by the pages.
+- `assets/fonts/`: only the Roboto weights used (400, 700, 900).
+- `assets/video/`: the landscape MP4 and a 1280 × 720 optimized poster. No unused vertical video.
+- `assets/feature-graphic-1024x500.png`: original sharing graphic, optimized losslessly.
+- `.nojekyll`: keep this empty file so GitHub Pages serves files as-is.
+
+Keep internal links relative (`index.html`, `privacy.html`, `assets/…`), without a leading `/`, so repository subpaths and custom domains both work. Google Play, email, canonical and sharing URLs are the intentional exceptions.
+
+GitHub serves `404.html` for missing URLs. Its relative links work for missing pages directly beneath the repository root; a missing URL in deeper, arbitrary folders resolves relative links there instead. This is a limitation of the required all-relative 404 page. Keep published links to these root-level pages and avoid inventing nested routes.
+
+## Preview and checks
+
+Open `index.html` directly in a browser to use `file://`, or from this folder run:
+
+```sh
+python3 -m http.server 8765
 ```
-index.html          the landing page (single page, all sections)
-privacy.html        the privacy policy (use this URL in the Play Console)
-404.html            friendly “page not found”, links back home
-site.webmanifest    optional web app manifest (icons for “Add to home screen”)
-.nojekyll           tells GitHub Pages to serve the files exactly as they are
-assets/
-  site.css          the whole stylesheet, brand tokens at the top
-  fonts/            self-hosted Roboto 400 / 500 / 700 / 900 (OFL 1.1)
-  icons/            logo + favicon + touch icons
-  screens/          app screenshots, 720 px wide WebP
-  video/            promo video (16:9 and 9:16 cuts) and their posters
-  feature-graphic-1024x500.png   the Open Graph / Twitter card image
+
+Then open `http://localhost:8765/`. Python is only an optional local preview tool, not a deployment dependency.
+
+Validation results from September 29, 2026:
+
+- All three pages open through `file://` and a local HTTP server without console errors or failed local resource responses.
+- Landing page visually checked at 360, 768 and 1280 CSS pixels; all three pages swept from 320 to 1440 pixels in 16-pixel increments with no horizontal overflow. All screenshots load, images have explicit dimensions, and each page has one H1. Menu/FAQ controls, keyboard Escape, reduced motion, 200% text enlargement and video playback were verified.
+- Lighthouse **11.6.0** using installed Chrome for Testing **126**, mobile 360 × 800, local HTTP server: **Performance 95, Accessibility 100, Best Practices 100, SEO 100**. Scores are a local measurement, not a guarantee for other browsers, devices or hosting conditions. Re-run Chrome DevTools › Lighthouse against the deployed URL.
+- Current assets plus HTML/CSS are under 1 MB excluding the video, below the requested ~1.5 MB budget. The MP4 is not downloaded until playback.
+
+Font licensing information is included below. Original source assets remain outside this delivery folder in the Website Kit.
+
+## Roboto license
+
+The provided Roboto Latin fonts are self-hosted unchanged. [Official Roboto license source](https://github.com/googlefonts/roboto-3-classic/blob/main/OFL.txt).
+
+```text
+Copyright 2011 The Roboto Project Authors (https://github.com/googlefonts/roboto-classic)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://openfontlicense.org
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded, 
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
 ```
-
----
-
-## How this repo is published
-
-**Live:** <https://luapearth.com/bunnyclock/>
-
-The custom domain `luapearth.com` is set on the account's user site (`luapearth/luapearth.github.io`),
-so **every** `luapearth.github.io` URL redirects there — including this project site.
-`https://luapearth.github.io/bunnyclock/` therefore 301-redirects to
-`https://luapearth.com/bunnyclock/`, and that custom-domain address is the one to use everywhere
-(canonical tag, Play Console, social posts).
-
-| Thing | Value |
-|---|---|
-| Repository | `luapearth/bunnyclock` (public) |
-| Push remote | `git@github-bunnyclock:luapearth/bunnyclock.git` |
-| Access | repo-scoped SSH **deploy key** with write access enabled |
-| Pages source | **`gh-pages` branch** — see the warning below |
-| Privacy policy URL | `https://luapearth.com/bunnyclock/privacy.html` |
-
-⚠️ **Pages is built from `gh-pages`, not `main`.** Pushing a `gh-pages` branch is what switched
-Pages on for this repo. It matters because GitHub's web editor ("Edit this file") edits `main`, the
-default branch — so a web-editor change will **not** appear on the site. Until this is switched,
-every update must be pushed to **both** branches.
-
-**Recommended once**, in the repo: **Settings → Pages → Build and deployment → Source: Deploy from
-a branch → Branch: `main` / `/ (root)` → Save.** After that, `main` alone publishes the site and
-the `gh-pages` branch can be deleted so there is only one place to edit.
-
-### Publishing an update
-
-```bash
-cd bunnyclock            # this folder
-git add -A && git commit -m "Describe the change"
-git push origin main
-git push origin main:gh-pages   # not needed once the source is main/(root)
-```
-
-GitHub rebuilds in about 30–60 seconds. Pages caches assets for up to 10 minutes, so a
-hard-refresh (or `?v=2` on the URL) may be needed to see a change.
-
-### Installing the deploy key on a new machine
-
-The key lives outside the repo and is never committed. On another machine: generate a new keypair,
-`ssh-keygen -t ed25519`, paste the `.pub` into **Settings → Deploy keys → Add deploy key** with
-*Allow write access* ticked, and add a `Host` alias in `~/.ssh/config` pointing at it.
-
-## Before you launch — check these values
-
-Everything below is already filled in with real values. It is listed here so you can find and
-change it quickly.
-
-| What | Current value | Where |
-|---|---|---|
-| Support / contact email | `jpgdm24@gmail.com` | `index.html` (footer `mailto:`), `privacy.html` (Contact section and footer) |
-| Publisher name | `John Paul Del Mundo` | `privacy.html` → “Contact” section |
-| Google Play link | `https://play.google.com/store/apps/details?id=com.luapearth.bunnyclock` | `index.html` — header, mobile menu, hero, Free card, Pro card, final call to action (6 places) |
-| Effective date of the policy | `September 29, 2026` | `privacy.html` — under the page title |
-| Copyright year | `© 2026` | `index.html`, `privacy.html`, `404.html` footers |
-
-If any of those should be a placeholder instead, replace the text in both files — the values are
-plain text, not variables.
-
-### Already done after the first deploy
-
-- **Canonical URL.** `index.html` carries `<link rel="canonical" href="https://luapearth.com/bunnyclock/" />`.
-  Change it if the site ever moves to a different address.
-- **Open Graph image.** `og:image` and `twitter:image` now use the **absolute** URL
-  `https://luapearth.com/bunnyclock/assets/feature-graphic-1024x500.png`, so social networks can
-  fetch it. If you change the feature graphic, paste the page URL into the
-  [Facebook sharing debugger](https://developers.facebook.com/tools/debug/) or the
-  [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) to refresh the cached preview.
-
-## Other things worth knowing
-
-- **Test locally.** Open `index.html` directly in a browser (it works from `file://`), or run a
-  tiny server from this folder: `python3 -m http.server 8000` and visit
-  <http://localhost:8000/>. Open the browser console — it should stay empty.
-- **The video.** The `<video>` element uses `preload="none"`, so the ~10 MB file is only fetched
-  when a visitor presses play. It never autoplays. On phones (under 700 px) the page swaps to the
-  vertical 9:16 cut and the matching vertical poster; on wider screens it uses the 16:9 cut. Both
-  files live in `assets/video/`.
-- **Screenshots.** The eight app screens are WebP at 720 px wide (about 285 KB in total), each with
-  `width`/`height` set so the layout does not jump while loading. To regenerate them, resize a
-  `screens/*.png` to 720 px wide and save as WebP quality ~82.
-- **`extras/store-screenshots/`** holds the eight ready-made 1080×1920 marketing slides from the
-  original kit. Nothing on the page links to them — they are kept here because they are handy for
-  the Play Store listing itself. Delete the folder if you don’t want it in the repo.
-- **Placeholders that are intentionally left visible:** none. If you want a literal
-  “fill this in” marker, add one where you need it and list it here.
-- **Dark mode.** The page is light by default, like the app. If the visitor’s device asks for dark
-  mode, the colours switch automatically (`prefers-color-scheme`). Nothing to configure.
-- **Editing colours.** All brand colours, radii and shadows are CSS custom properties at the top of
-  `assets/site.css`. Changing `--teal` there updates every button, link and accent on all three
-  pages.
-- **Cloudflare rewrites the HTML (worth knowing).** `luapearth.com` sits behind Cloudflare, and its
-  *Scrape Shield → Email Address Obfuscation* setting rewrites every `mailto:` link on the page
-  into a `/cdn-cgi/l/email-protection#…` link and injects Cloudflare's own
-  `/cdn-cgi/scripts/…/email-decode.min.js` into each page. The page is designed to be script-free,
-  and without JavaScript the Contact link shows `[email protected]` and goes nowhere. To keep the
-  shipped HTML exactly as it is in this repo, turn that setting off in the Cloudflare dashboard.
-- **HTTPS.** `https://luapearth.github.io/bunnyclock/` redirects to `http://luapearth.com/bunnyclock/`
-  — the redirect lands on plain HTTP. HTTPS itself works on the custom domain (Cloudflare's
-  certificate is valid), so the fix is a Cloudflare setting: **SSL/TLS → Edge Certificates → Always
-  Use HTTPS = on**. Also tick *Enforce HTTPS* on the Pages custom-domain screen if it is offered.
-
-## Not included, on purpose
-
-No analytics, no cookie banner (there are no cookies), no contact form (the contact link is a
-`mailto:`), no newsletter, no chat widget. If you add any of these, they will be the first third
-party to see your visitors — decide that deliberately.
-
-## What was checked before handing this over
-
-Measured on this build — first locally over http, then again on the deployed site — and re-measured
-after the video poster and canonical changes:
-
-- **Lighthouse** — `index.html`: Performance **98**, Accessibility **100**, Best Practices **100**,
-  SEO **100**. `privacy.html`: 98 / 100 / 100 / 100.
-- **axe-core** (WCAG 2.0/2.1 A + AA) — **0 violations** on `index.html` (at 1280 px and 360 px),
-  `privacy.html` and `404.html`.
-- **Layout** — no horizontal scrolling at 320, 360, 768 or 1280 px; all 11 images load; no console
-  errors or failed requests.
-- **Video** — plays in both aspect-ratio modes with the matching poster; never autoplays.
-- **Motion** — with `prefers-reduced-motion: reduce`, no content is left hidden.
-- **Deployed site** — the same checks run against `https://luapearth.com/bunnyclock/`: 320/360/768/1280 px
-  clean, all images and fonts load, the video picks the 16:9 or 9:16 cut per breakpoint, no console
-  errors. The only network artifact is a cancelled request for the 16:9 poster on phones (the
-  poster is swapped for the vertical one as the page loads).
-
-Two things still worth a human eye:
-
-1. **Captions for the promo video.** The video has an audio track and no subtitle track. If it
-   contains narration or dialogue, WCAG 2.2 AA asks for captions: create a `captions.vtt` and add
-   `<track kind="captions" src="assets/video/captions.vtt" srclang="en" label="English" default>`
-   inside the `<video>`. If the audio is music only, this can stay as it is.
-2. **Fonts when opened straight from `file://`.** Chrome and Firefox block local font files loaded
-   from a `file://` page (a browser security rule, not a bug here), so on a double-clicked
-   `index.html` the text falls back to your system font. Everything else — layout, images, video —
-   works fine from `file://`. Preview over a local server if you want to see the real typography:
-
-   ```bash
-   python3 -m http.server 8000
-   ```
-
-   On the live GitHub Pages site this never happens.
