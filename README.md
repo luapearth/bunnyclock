@@ -18,7 +18,7 @@ Support email is **jpgdm24@gmail.com**, including all footer links and the priva
 
 | Placeholder | Where | What to change |
 | --- | --- | --- |
-| `[your site URL]` | Commented canonical link in the `<head>` of all three HTML pages | Replace with the complete deployed origin and repository path, with no final slash; then uncomment the canonical tag. The homepage may use the trailing-slash URL instead of `index.html`. The 404 canonical is optional and can be removed. |
+| `[your site URL]` | — none left — | **Done.** The homepage carries `<link rel="canonical" href="https://luapearth.com/bunnyclock/">` and the policy `…/privacy.html`. The 404 page deliberately has **no** canonical: it is served with a 404 status, so a canonical would point at a URL that does not exist. It carries `<meta name="robots" content="noindex, follow">` instead, which is the directive that matters there. |
 | `<user>`, `<repo>` | Example URLs in this README | Substitute your GitHub username/organization and repository name. |
 
 The two social-image references in `index.html` (`og:image` and `twitter:image`) deliberately use `assets/feature-graphic-1024x500.png`. After the first deploy, replace both with the absolute image URL, for example `https://<user>.github.io/<repo>/assets/feature-graphic-1024x500.png`, so sharing crawlers can resolve them reliably. Those are deployment values, not third-party assets.
