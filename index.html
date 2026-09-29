@@ -10,9 +10,7 @@
     />
     <meta name="theme-color" content="#00796B" />
 
-    <!-- Canonical: uncomment and set your real URL after the first deploy.
-    <link rel="canonical" href="https://YOUR-USER.github.io/YOUR-REPO/" />
-    -->
+    <link rel="canonical" href="https://luapearth.com/bunnyclock/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BunnyClock" />
     <meta property="og:title" content="BunnyClock: offline face attendance for young students" />
@@ -20,8 +18,8 @@
       property="og:description"
       content="Attendance… but make it fun. Offline face check-in for young students. No account, no cloud, no ads, no tracking."
     />
-    <!-- Relative so it works on GitHub Pages; the README explains when to make it absolute. -->
-    <meta property="og:image" content="assets/feature-graphic-1024x500.png" />
+    <!-- Absolute so social networks resolve it; the site's live address is the custom domain. -->
+    <meta property="og:image" content="https://luapearth.com/bunnyclock/assets/feature-graphic-1024x500.png" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="500" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -30,7 +28,7 @@
       name="twitter:description"
       content="Attendance… but make it fun. Offline face check-in for young students. No account, no cloud, no ads, no tracking."
     />
-    <meta name="twitter:image" content="assets/feature-graphic-1024x500.png" />
+    <meta name="twitter:image" content="https://luapearth.com/bunnyclock/assets/feature-graphic-1024x500.png" />
 
     <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="assets/icons/icon-32.png" sizes="32x32" />
@@ -576,7 +574,10 @@
         });
       })();
 
-      // Vertical video cut for phones: keep the poster in step with the source
+      // Vertical video cut for phones: keep the still in step with the source.
+      // (A CSS background-image on the <video> was tried and does not work: Chrome paints
+      // an opaque dark layer over it until a frame arrives. The poster attribute is the
+      // only reliable mechanism, so the 16:9 file is fetched first and replaced here.)
       (function () {
         var v = document.getElementById("promo");
         if (!v || !window.matchMedia) return;
