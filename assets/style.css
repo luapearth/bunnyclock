@@ -1,6 +1,11 @@
 @font-face{font-family:Roboto;src:url('fonts/roboto-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:Roboto;src:url('fonts/roboto-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:Roboto;src:url('fonts/roboto-latin-900-normal.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+/* Peso sign only (U+20B1). The latin subsets do not contain it, so without this the
+   symbol would be drawn from a fallback font. unicode-range means the file is fetched
+   only on pages that actually show a price. */
+@font-face{font-family:Roboto;src:url('fonts/roboto-peso-20b1.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+20B1}
+@font-face{font-family:Roboto;src:url('fonts/roboto-peso-20b1.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;unicode-range:U+20B1}
 :root{
   --cream:#F4EFEA;--card:#FAFAFA;--ink:#1C1B1F;--muted:#49454F;--line:#E3DDD6;
   --teal:#00796B;--mint:#B2DFDB;--in:#2E7D32;--out:#EF6C00;--missed:#5C6BC0;

@@ -26,7 +26,7 @@ The two social-image references in `index.html` (`og:image` and `twitter:image`)
 ## What to review before launch
 
 - All Google Play buttons point to `https://play.google.com/store/apps/details?id=com.luapearth.bunnyclock`. The link becomes useful once the app is published. Confirm the listing is live before announcing the site.
-- Free stays free forever. Pro is **$4.99/month**, billed through Google Play and cancellable there. Ultimate is **$8.99/month, Coming soon** with no purchase button. Cloud sync and backup are **not available**; keep that distinction explicit in any edits.
+- Free stays free forever. Prices are in **Philippine pesos**: Pro is **₱149/month**, Ultimate is **₱219/month, Coming soon** (no purchase button). Billing runs through Google Play, which shows each buyer their own local currency — keep the Play Console price for the PH region in step with these figures. Cloud sync and backup are **not available**; keep that distinction explicit in any edits.
 - The privacy policy was restyled from the supplied `assets/privacy.html`. Its sections and disclosures were retained, including the effective date, **September 29, 2026**, and the Google ML Kit diagnostic-data disclosure. The contact email is jpgdm24@gmail.com and the publisher is John Paul Del Mundo, as confirmed by the owner.
 - Have the publisher check that the policy still describes the shipping app. In particular, reconcile the supplied “no tracking” product statement with the supplied disclosure that ML Kit may send Google limited device/app diagnostics. Do not silently remove that disclosure. This site does not perform those requests.
 - All students in the screenshots are fictional. The camera screenshot remains masked exactly as provided.
