@@ -21,13 +21,28 @@ Support email is **jpgdm24@gmail.com**, including all footer links and the priva
 | `[your site URL]` | — none left — | **Done.** The homepage carries `<link rel="canonical" href="https://luapearth.com/bunnyclock/">` and the policy `…/privacy.html`. The 404 page deliberately has **no** canonical: it is served with a 404 status, so a canonical would point at a URL that does not exist. It carries `<meta name="robots" content="noindex, follow">` instead, which is the directive that matters there. |
 | `<user>`, `<repo>` | Example URLs in this README | Substitute your GitHub username/organization and repository name. |
 
-The two social-image references in `index.html` (`og:image` and `twitter:image`) deliberately use `assets/feature-graphic-1024x500.png`. After the first deploy, replace both with the absolute image URL, for example `https://<user>.github.io/<repo>/assets/feature-graphic-1024x500.png`, so sharing crawlers can resolve them reliably. Those are deployment values, not third-party assets.
+The two social-image references in `index.html` (`og:image` and `twitter:image`) use the absolute URL `https://luapearth.com/bunnyclock/assets/feature-graphic-1024x500.png` so sharing crawlers can resolve them. Those are deployment values, not third-party assets.
+
+## HTTPS
+
+`https://luapearth.com/bunnyclock` (no trailing slash) currently redirects to `http://`. This is a hosting setting, not an HTML change:
+
+1. **Cloudflare › SSL/TLS › Overview:** set the encryption mode to **Full** (or **Full (strict)**). Flexible mode makes Cloudflare talk to GitHub over plain HTTP, so GitHub's trailing-slash redirect comes back as `http://`.
+2. **Cloudflare › SSL/TLS › Edge Certificates:** turn on **Always Use HTTPS**.
+3. **GitHub › Settings › Pages:** tick **Enforce HTTPS**.
+
+Verify:
+
+```sh
+curl -I https://luapearth.com/bunnyclock    # must not show "location: http://"
+curl -I http://luapearth.com/bunnyclock/    # must redirect to https://
+```
 
 ## What to review before launch
 
 - All Google Play buttons point to `https://play.google.com/store/apps/details?id=com.luapearth.bunnyclock`. The link becomes useful once the app is published. Confirm the listing is live before announcing the site.
-- Free stays free forever. Prices are in **Philippine pesos**: Pro is **₱149/month**, Ultimate is **₱219/month, Coming soon** (no purchase button). Billing runs through Google Play, which shows each buyer their own local currency — keep the Play Console price for the PH region in step with these figures. Cloud sync and backup are **not available**; keep that distinction explicit in any edits.
-- The privacy policy was restyled from the supplied `assets/privacy.html`. Its sections and disclosures were retained, including the effective date, **September 29, 2026**, and the Google ML Kit diagnostic-data disclosure. The contact email is jpgdm24@gmail.com and the publisher is John Paul Del Mundo, as confirmed by the owner.
+- Free stays free forever. Prices are in **Philippine pesos**: Basic is **₱59/month** (7-day free trial for new subscribers), Pro is **₱109/month**, Ultimate is **₱159/month, Coming soon** (no purchase button). Billing runs through Google Play, which shows each buyer their own local currency — keep the Play Console price for the PH region in step with these figures. Cloud sync and backup are **not available**; keep that distinction explicit in any edits.
+- The privacy policy was restyled from the supplied `assets/privacy.html`. Its sections and disclosures were retained, including the Google ML Kit diagnostic-data disclosure. The October 2026 update (Basic plan, subjects, CSV download/share/import, Pro-only face sending, storage permission) set the effective date to **October 7, 2026**; keep it in step with the app release. The contact email is jpgdm24@gmail.com and the publisher is John Paul Del Mundo, as confirmed by the owner.
 - Have the publisher check that the policy still describes the shipping app. In particular, reconcile the supplied “no tracking” product statement with the supplied disclosure that ML Kit may send Google limited device/app diagnostics. Do not silently remove that disclosure. This site does not perform those requests.
 - All students in the screenshots are fictional. The camera screenshot remains masked exactly as provided.
 - The privacy policy preserves two user-activated source links to Google’s ML Kit disclosure and Google’s privacy policy. They do not load external resources. All pages make zero external requests while being viewed; Google Play and policy reference pages open only when their links are activated.
@@ -39,7 +54,7 @@ The two social-image references in `index.html` (`og:image` and `twitter:image`)
 - `privacy.html`: privacy policy and publisher/contact details.
 - `404.html`: friendly missing-page screen and relative home link.
 - `assets/style.css`: shared styles, exact brand tokens, self-hosted font declarations and responsive layouts. Light theme only. Reduced-motion preferences are respected.
-- `assets/screens/`: seven optimized WebP screenshots, 720 × 1607, preserving the original full screen. No unused PNG fallbacks.
+- `assets/screens/`: eleven optimized WebP screenshots, 720 × 1607, preserving the original full screen. No unused PNG fallbacks.
 - `assets/icons/`: only the supplied logo and favicons used by the pages.
 - `assets/fonts/`: only the Roboto weights used (400, 700, 900).
 - `assets/video/`: the landscape MP4 and a 1280 × 720 optimized poster. No unused vertical video.
@@ -60,7 +75,12 @@ python3 -m http.server 8765
 
 Then open `http://localhost:8765/`. Python is only an optional local preview tool, not a deployment dependency.
 
-Validation results from September 29, 2026:
+Validation results from October 7, 2026 (October update: Basic plan, subjects, CSV download/import):
+
+- `index.html`, `privacy.html` and `404.html` load from a local HTTP server with no console errors, failed requests, broken images or external requests; no horizontal overflow at 320, 360, 768, 1024, 1280 and 1440 pixels. Landing page visually checked at 360, 768 and 1280.
+- Lighthouse **11.6.0**, headless Chromium, mobile, local HTTP server: `index.html` **Performance 98, Accessibility 100, Best Practices 100, SEO 100**; `privacy.html` **100 / 100 / 100 / 100**.
+
+Earlier validation results from September 29, 2026:
 
 - All three pages open through `file://` and a local HTTP server without console errors or failed local resource responses.
 - Landing page visually checked at 360, 768 and 1280 CSS pixels; all three pages swept from 320 to 1440 pixels in 16-pixel increments with no horizontal overflow. All screenshots load, images have explicit dimensions, and each page has one H1. Menu/FAQ controls, keyboard Escape, reduced motion, 200% text enlargement and video playback were verified.

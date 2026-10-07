@@ -14,7 +14,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header container"><a class="brand" href="index.html" aria-label="BunnyClock home"><img src="assets/icons/logo-rounded-512.png" width="40" height="40" alt=""><span>Bunny<span class="accent">Clock</span></span></a><a class="text-link" href="index.html">Back to home</a></header><main id="main" class="policy container"><p class="eyebrow">BunnyClock for Android</p><h1>Our privacy <span class="accent">policy.</span></h1><p class="meta">Effective date: September 29, 2026 · App: BunnyClock for Android (com.luapearth.bunnyclock)</p><div class="summary">
+<header class="site-header container"><a class="brand" href="index.html" aria-label="BunnyClock home"><img src="assets/icons/logo-rounded-512.png" width="40" height="40" alt=""><span>Bunny<span class="accent">Clock</span></span></a><a class="text-link" href="index.html">Back to home</a></header><main id="main" class="policy container"><p class="eyebrow">BunnyClock for Android</p><h1>Our privacy <span class="accent">policy.</span></h1><p class="meta">Effective date: October 7, 2026 · App: BunnyClock for Android (com.luapearth.bunnyclock)</p><div class="summary">
         <p>The short version</p>
         <ul>
           <li>
@@ -27,7 +27,7 @@
           </li>
           <li>
             Data leaves the device only when a grown-up chooses to send it by
-            Bluetooth or share it as a spreadsheet.
+            Bluetooth, or to download or share it as a spreadsheet.
           </li>
           <li>No ads, no accounts, no tracking.</li>
         </ul>
@@ -74,9 +74,17 @@
           <tr>
             <td>
               Attendance records: clock-in, clock-out and missed clock-out
-              times, with a match score
+              times, with a match score and the subject, if one is set
             </td>
             <td>To show records and daily attendance</td>
+            <td>On the device only</td>
+          </tr>
+          <tr>
+            <td>
+              Subjects you create (a name and an emoji), and the subject linked
+              to each clock record
+            </td>
+            <td>To group attendance by class</td>
             <td>On the device only</td>
           </tr>
           <tr>
@@ -112,26 +120,47 @@
       <section>
         <h2>When data leaves the device</h2>
         <p>
-          Only when a grown-up chooses to, and only in these two ways. Both are
-          protected by a grown-ups-only question so children can’t start them.
+          Only when a grown-up chooses to. All of these are protected by a
+          grown-ups-only question so children can’t start them:
         </p>
         <ul>
           <li>
-            <strong>Bluetooth transfer</strong> to another device you have
-            paired with, such as the teacher’s tablet. You choose which students
-            and which day to send. Names and attendance records are sent; face
-            prints are sent only if you switch on “Also send faces”, which is
+            <strong>Bluetooth transfer</strong> to a paired phone or tablet. You
+            choose which students, day and records to send; the receiving
+            teacher chooses which subject they belong to. Names and attendance
+            records are sent; <strong>face prints are sent only from BunnyClock
+            Pro, and only if you switch on “Also send faces”</strong>, which is
             off by default.
           </li>
           <li>
-            <strong>Share records as a spreadsheet (CSV)</strong> through
-            Android’s share menu, to an app you pick (for example email or
-            Google Drive). The spreadsheet contains names, student IDs, classes,
-            clock times and match scores. It never contains face prints. Once
-            shared, the file is handled by the app you sent it to.
+            <strong>Download a spreadsheet (CSV)</strong> (Basic and Pro) to
+            your device’s <strong>Downloads</strong> folder. Files there can be
+            opened by you and by other apps you allow to access your files. It
+            never contains face prints.
+          </li>
+          <li>
+            <strong>Share a spreadsheet (CSV)</strong> (Pro) through Android’s
+            share menu, to an app you pick (for example email or Google Drive).
+            It never contains face prints; once shared, the file is handled by
+            the app you sent it to.
           </li>
         </ul>
+        <p>
+          Spreadsheets contain names, student IDs, classes, subjects, clock
+          times and match scores.
+        </p>
         <p>Cloud sync is not available in the app.</p>
+      </section>
+
+      <section>
+        <h2>Importing data</h2>
+        <p>
+          With BunnyClock Pro, a grown-up can import a spreadsheet (CSV) they
+          choose with Android’s file picker — a BunnyClock export or a class
+          list. BunnyClock reads only that file, shows what it would add, and
+          saves nothing until you tap Import. Imported students have no face
+          print until they register.
+        </p>
       </section>
 
       <section>
@@ -150,10 +179,12 @@
             >.
           </li>
           <li>
-            <strong>Purchases (Google Play).</strong> BunnyClock Pro is a
-            subscription bought through Google Play. Google handles the payment
-            and your payment details; the app only receives whether Pro is
-            active. See the
+            <strong>Purchases (Google Play).</strong> BunnyClock Basic and
+            BunnyClock Pro are subscriptions bought through Google Play,
+            sometimes with a free trial. Google handles the payment and your
+            payment details; the app only receives which plan is active. While
+            the app is open and online it checks this with Google Play every few
+            minutes; offline, it keeps your plan for up to 15 days. See the
             <a href="https://policies.google.com/privacy"
               >Google Privacy Policy</a
             >.
@@ -173,6 +204,12 @@
             transfer between paired devices.
           </li>
           <li>
+            <strong>Storage (Android 8 and 9 only)</strong>: to save exported
+            spreadsheets to the Downloads folder. Newer Android versions need no
+            permission for this. Importing uses Android’s file picker and needs
+            no permission.
+          </li>
+          <li>
             <strong>Internet</strong>: used by Google Play for purchases.
             BunnyClock itself does not send your data over the internet.
           </li>
@@ -184,9 +221,9 @@
         <p>
           BunnyClock is made for use with young children under the supervision
           of a teacher or parent. We do not collect personal information from
-          children. Purchases, sharing and transfers are behind a grown-ups-only
-          question. There are no ads and no links out of the app for children to
-          follow.
+          children. Purchases, sharing, transfers, imports and changes to
+          students and subjects are behind a grown-ups-only question. There are
+          no ads and no links out of the app for children to follow.
         </p>
       </section>
 
@@ -204,6 +241,14 @@
             Records you have already sent by Bluetooth or shared as a
             spreadsheet stay wherever you sent them; delete them there too if
             needed.
+          </li>
+          <li>
+            Spreadsheets you downloaded stay in your Downloads folder until you
+            delete them.
+          </li>
+          <li>
+            Deleting a subject removes it from the app’s picker; past records
+            keep the subject’s name.
           </li>
         </ul>
         <p>

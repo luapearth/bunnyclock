@@ -33,7 +33,10 @@
       property="og:description"
       content="BunnyClock makes attendance a happy moment. Offline face recognition, animal buddies and private records for young students on Android phones and tablets."
     />
-    <meta property="og:image" content="assets/feature-graphic-1024x500.png" />
+    <meta
+      property="og:image"
+      content="https://luapearth.com/bunnyclock/assets/feature-graphic-1024x500.png"
+    />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="500" />
     <meta
@@ -49,7 +52,10 @@
       name="twitter:description"
       content="BunnyClock makes attendance a happy moment. Offline face recognition, animal buddies and private records for young students on Android phones and tablets."
     />
-    <meta name="twitter:image" content="assets/feature-graphic-1024x500.png" />
+    <meta
+      name="twitter:image"
+      content="https://luapearth.com/bunnyclock/assets/feature-graphic-1024x500.png"
+    />
     <meta
       name="twitter:image:alt"
       content="BunnyClock — offline face attendance for young students"
@@ -149,10 +155,10 @@
           </div>
           <div class="phone hero-home">
             <img
-              src="assets/screens/02-home.webp"
+              src="assets/screens/01-home-button-subject.webp"
               width="720"
               height="1607"
-              alt="BunnyClock home screen listing six students with IN and OUT badges"
+              alt="BunnyClock home screen with a big round Clock In / Out button and a Math subject picker"
               fetchpriority="high"
               decoding="async"
             />
@@ -196,7 +202,10 @@
           <article class="step-card">
             <span class="step-number">01</span>
             <h3>Look at the bunny</h3>
-            <p>Find the bunny on the tablet. Put your face inside its face.</p>
+            <p>
+              Tap the big button, then look at the bunny. Put your face inside
+              its face.
+            </p>
             <div class="phone">
               <img
                 src="assets/screens/06-bunny-camera.webp"
@@ -231,10 +240,10 @@
             </p>
             <div class="phone">
               <img
-                src="assets/screens/07-hi-mia-success.webp"
+                src="assets/screens/14-hi-mia-success-subject.webp"
                 width="720"
                 height="1607"
-                alt="BunnyClock success screen greeting Mia at 7:48 AM with a Clocked IN badge"
+                alt="BunnyClock success screen saying Hi, Mia! with Math at 7:48 AM and a Clocked IN badge"
                 loading="lazy"
                 decoding="async"
               />
@@ -262,9 +271,10 @@
           <article class="feature-card feature-wide">
             <div>
               <span class="feature-kicker">See the day</span>
-              <h3>Whole class<br />at a glance</h3>
+              <h3>Whole class <br />at a glance</h3>
               <p>
-                See who’s IN and who’s OUT, with clear badges for each student.
+                The 👥 Students screen shows who’s IN and who’s OUT, with clear
+                badges for each student.
               </p>
               <div class="status-key">
                 <span class="status-in">IN</span
@@ -273,10 +283,10 @@
             </div>
             <div class="phone">
               <img
-                src="assets/screens/02-home.webp"
+                src="assets/screens/02-students.webp"
                 width="720"
                 height="1607"
-                alt="BunnyClock home screen listing six students with IN and OUT badges"
+                alt="BunnyClock Students screen listing seven students with IN, OUT and No face yet labels"
                 loading="lazy"
                 decoding="async"
               />
@@ -285,22 +295,27 @@
           <article class="feature-card feature-wide">
             <div>
               <span class="feature-kicker">Room for real life</span>
-              <h3>Forgot to<br />clock out?</h3>
+              <h3>Forgot to <br />clock out?</h3>
               <p>
-                Long-press a student to mark a missed clock-out. Changed your
-                mind? Undo it.
+                Long-press a student on the 👥 Students screen to mark a missed
+                clock-out. Changed your mind? Undo it.
               </p>
               <span class="status-missed">MISSED</span>
             </div>
-            <div class="phone">
-              <img
-                src="assets/screens/03-home-missed.webp"
-                width="720"
-                height="1607"
-                alt="BunnyClock home screen with Leo Cruz marked MISSED and an Undo missed clock-out message"
-                loading="lazy"
-                decoding="async"
-              />
+            <div
+              class="missed-demo"
+              role="img"
+              aria-label="Leo Cruz marked MISSED on the Students screen, with an Undo button"
+            >
+              <div class="missed-row">
+                <span class="missed-buddy" aria-hidden="true">🦁</span>
+                <span class="missed-name"
+                  ><strong>Leo Cruz</strong><small>Grade 2 · Sunflower</small></span
+                ><span class="status-missed">MISSED</span>
+              </div>
+              <div class="missed-snack">
+                <span>Missed clock-out</span><span>Undo</span>
+              </div>
             </div>
           </article>
           <article class="feature-card feature-small">
@@ -325,15 +340,16 @@
               <span class="feature-kicker">The details, saved</span>
               <h3>Every IN and OUT</h3>
               <p>
-                Find each student’s records, with the time and match confidence.
+                Find each student’s records, with the time and match confidence
+                — and the subject on Basic and Pro.
               </p>
             </div>
             <div class="phone">
               <img
-                src="assets/screens/05-records.webp"
+                src="assets/screens/06-records-with-subjects.webp"
                 width="720"
                 height="1607"
-                alt="Mia Santos’s attendance records showing IN and OUT times and match confidence"
+                alt="Mia Santos’s attendance records showing IN and OUT times, the Science subject and match confidence"
                 loading="lazy"
                 decoding="async"
               />
@@ -341,22 +357,74 @@
           </article>
           <article class="feature-card feature-small">
             <div>
-              <span class="pro-pill">⭐ PRO</span>
+              <span class="pro-pill">Basic &amp; Pro</span>
               <h3>The daily picture</h3>
               <p>
                 Present, absent, still here or gone home. One attendance
-                summary.
+                summary, filtered by subject when you need it.
               </p>
             </div>
             <div class="phone">
               <img
-                src="assets/screens/08-attendance.webp"
+                src="assets/screens/04-attendance-subject-filter.webp"
                 width="720"
                 height="1607"
-                alt="BunnyClock Pro daily attendance summary with present, absent, still here and gone home totals"
+                alt="BunnyClock attendance summary for Tuesday, September 29, filtered to Science, with present, absent and still here totals"
                 loading="lazy"
                 decoding="async"
               />
+            </div>
+          </article>
+          <article class="feature-card feature-wide">
+            <div>
+              <span class="pro-pill">Basic &amp; Pro</span>
+              <h3>Subjects</h3>
+              <p>
+                Teach more than one class? Create subjects, pick one before
+                class, and every clock-in lands in the right place.
+              </p>
+            </div>
+            <div class="phone">
+              <img
+                src="assets/screens/03-subjects.webp"
+                width="720"
+                height="1607"
+                alt="BunnyClock Subjects screen with Math and Science subjects, each keeping its own IN and OUT"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </article>
+          <article class="feature-card feature-wide feature-pair">
+            <div>
+              <span class="feature-kicker">Spreadsheets</span>
+              <h3>Download <br />or import</h3>
+              <p>
+                Download records as a spreadsheet (Basic &amp; Pro). Share them
+                or import a class list (Pro).
+              </p>
+            </div>
+            <div class="phone-pair">
+              <div class="phone">
+                <img
+                  src="assets/screens/07-export-download.webp"
+                  width="720"
+                  height="1607"
+                  alt="BunnyClock Export records dialog for all students and all dates, with Download and Share buttons"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="phone">
+                <img
+                  src="assets/screens/08-import-preview.webp"
+                  width="720"
+                  height="1607"
+                  alt="BunnyClock Import records preview: 1 new student and 2 new records found, with Cancel and Import buttons"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
           </article>
         </div>
@@ -370,9 +438,10 @@
           </div>
         </div>
         <p class="feature-footnote">
-          Send attendance to the teacher’s device over Bluetooth. Choose the
-          students and day; a multiplication question keeps sharing and
-          transfers in grown-up hands.
+          Send attendance to the teacher’s phone or tablet over Bluetooth.
+          Choose the students, day and records; the teacher chooses the
+          subject. A multiplication question keeps sharing and transfers in
+          grown-up hands.
         </p>
       </section>
 
@@ -442,8 +511,8 @@
             <div>
               <h3>On the device. Offline.</h3>
               <p>
-                Face recognition runs on the device. Records stay on the tablet
-                and aren’t included in device backups.
+                Face recognition runs on the device. Records stay on the phone
+                or tablet and aren’t included in device backups.
               </p>
             </div>
             <div>
@@ -453,8 +522,9 @@
             <div>
               <h3>Grown-ups choose what leaves.</h3>
               <p>
-                Sending face prints over Bluetooth is off by default and needs
-                an adult to switch it on. CSV exports never contain face prints.
+                Only Pro devices can send face prints over Bluetooth, and only
+                when an adult switches it on. CSV exports never contain face
+                prints.
               </p>
             </div>
           </div>
@@ -497,19 +567,42 @@
               >Get started for free</a
             >
           </article>
+          <article class="price-card">
+            <span class="new-pill">NEW</span>
+            <p class="plan-name">BunnyClock Basic</p>
+            <h3 class="price">₱59<span> / month</span></h3>
+            <p class="trial-pill">7-day free trial for new subscribers</p>
+            <p class="plan-description">A clear picture of every class.</p>
+            <p class="includes">Everything in Free, plus:</p>
+            <ul class="check-list">
+              <li>
+                Daily attendance summary (present, absent, still here, gone
+                home, missed)
+              </li>
+              <li>Mark everyone still here as missed in one step</li>
+              <li>Subjects</li>
+              <li>Download records as a spreadsheet (CSV)</li>
+            </ul>
+            <a
+              class="button button-outline"
+              href="https://play.google.com/store/apps/details?id=com.luapearth.bunnyclock"
+              >Get BunnyClock on Google Play</a
+            >
+            <p class="plan-note">Subscribe to Basic in the app.</p>
+          </article>
           <article class="price-card price-pro">
             <span class="pro-pill">⭐ PRO</span>
             <p class="plan-name">BunnyClock Pro</p>
-            <h3 class="price">₱149<span> / month</span></h3>
+            <h3 class="price">₱109<span> / month</span></h3>
             <p class="plan-description">More help with the whole day.</p>
-            <p class="includes">Everything in Free, plus:</p>
+            <p class="includes">Everything in Basic, plus:</p>
             <ul class="check-list">
-              <li>Daily attendance summary</li>
-              <li>Mark everyone still here as missed in one step</li>
+              <li>Share records as CSV (email, Drive, chat)</li>
+              <li>Import records or a class list from CSV</li>
               <li>
-                Collect attendance from every classroom tablet over Bluetooth
+                Collect attendance from every phone and tablet over Bluetooth
               </li>
-              <li>Share records as a spreadsheet (CSV)</li>
+              <li>Send face prints over Bluetooth (opt-in)</li>
               <li>5 more themes and your own background photo</li>
               <li>Balloons, stars, hearts and carrots</li>
             </ul>
@@ -523,7 +616,7 @@
           <article class="price-card price-soon">
             <span class="soon-pill">Coming soon</span>
             <p class="plan-name">BunnyClock Ultimate</p>
-            <h3 class="price">₱219<span> / month</span></h3>
+            <h3 class="price">₱159<span> / month</span></h3>
             <p class="plan-description">
               A future home for your classroom’s records.
             </p>
@@ -547,9 +640,13 @@
             >
           </p>
           <p>
-            Pro is a monthly Google Play subscription. It renews until you
-            cancel; cancel anytime in Google Play › Payments &amp;
+            Basic and Pro are monthly Google Play subscriptions. They renew
+            until you cancel; cancel anytime in Google Play › Payments &amp;
             subscriptions.
+          </p>
+          <p>
+            Upgrading from Basic to Pro replaces your Basic subscription, and
+            Google Play credits the unused time.
           </p>
         </div>
       </section>
@@ -572,7 +669,9 @@
             </summary>
             <p>
               Attendance works fully offline, and face recognition runs on the
-              device. Pro is a Google Play subscription.
+              device. Basic and Pro are Google Play subscriptions; the app
+              checks your plan with Google Play when it’s online and keeps
+              working offline for up to 15 days.
             </p>
           </details>
           <details>
@@ -580,10 +679,10 @@
               Where are faces stored?<span aria-hidden="true">+</span>
             </summary>
             <p>
-              Face prints are stored only on the tablet and aren’t included in
-              device backups. Sending them over Bluetooth is off by default and
-              must be switched on by an adult. CSV exports never contain face
-              prints.
+              Face prints are stored only on the phone or tablet and aren’t
+              included in device backups. Only Pro devices can send them over
+              Bluetooth, and only when an adult switches it on—it’s off by
+              default. CSV exports never contain face prints.
             </p>
           </details>
           <details>
@@ -598,16 +697,46 @@
             </p>
           </details>
           <details>
+            <summary>What are subjects?<span aria-hidden="true">+</span></summary>
+            <p>
+              With Basic or Pro, teachers who teach more than one class create
+              subjects, such as 📐 Math or 🔬 Science, and pick one under the
+              big button before class. Every clock-in and clock-out is linked
+              to it, each subject has its own IN and OUT, and records can be
+              moved to another subject later.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Can I import my class list?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Yes, with Pro: import a spreadsheet (CSV) with name, student ID
+              and class, or a BunnyClock export. You see a preview before
+              anything changes. New students then register their face.
+            </p>
+          </details>
+          <details>
             <summary>Which devices?<span aria-hidden="true">+</span></summary>
             <p>Android phones and tablets running Android 8.0 or later.</p>
           </details>
           <details>
             <summary>
-              How do I cancel Pro?<span aria-hidden="true">+</span>
+              Is there a free trial?<span aria-hidden="true">+</span>
             </summary>
             <p>
-              Cancel anytime in Google Play › Payments &amp; subscriptions. Pro
-              is a monthly subscription and renews until you cancel.
+              Basic has a 7-day free trial for new subscribers. You can cancel
+              before it ends in Google Play and you won’t be charged.
+            </p>
+          </details>
+          <details>
+            <summary>
+              How do I cancel a subscription?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Cancel Basic or Pro anytime in Google Play › Payments &amp;
+              subscriptions. Both are monthly subscriptions and renew until you
+              cancel.
             </p>
           </details>
           <details>

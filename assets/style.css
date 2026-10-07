@@ -130,9 +130,9 @@ p{color:var(--muted)}
 .privacy-points>div+div{border-top:1px solid rgba(0,121,107,.2);margin-top:23px;padding-top:23px}
 .privacy-points h3{font-size:1.1rem;letter-spacing:-.01em;font-weight:700}
 .privacy-points p{margin-top:9px;font-size:.91rem}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:stretch}
 .price-card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:38px 26px 26px}
-.price-card>.pro-pill,.price-card>.soon-pill{position:absolute;top:-15px;left:25px}
+.price-card>.pro-pill,.price-card>.soon-pill,.price-card>.new-pill{position:absolute;top:-15px;left:25px}
 .price-pro{border:2px solid var(--teal);box-shadow:0 15px 40px rgba(0,121,107,.08);padding:37px 25px 25px}
 .plan-name{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:17px}
 .price{font-size:2.9rem;white-space:nowrap}
@@ -194,6 +194,7 @@ p{color:var(--muted)}
   .container{width:calc(100% - 48px)}.site-header{gap:18px}.desktop-nav{gap:17px}
   .hero{min-height:630px;gap:14px}.hero-art{min-height:500px}.hero-home{width:185px;left:6px;top:45px}.hero-success{width:195px;right:10px;top:5px}.hello-note{bottom:0;right:15px}
   .hero-actions{gap:15px}.feature-card{padding:24px}.feature-wide{gap:18px}.feature-wide .phone{width:145px}.feature-wide h3{font-size:1.55rem}.feature-small h3{font-size:1.3rem}
+  .pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}.feature-pair .phone-pair .phone{width:118px}.missed-demo{flex-basis:200px}
   .privacy-card{padding:38px;gap:38px}.price-card{padding-inline:22px}.price-pro{padding-inline:21px}.price{font-size:2.5rem}
 }
 @media(max-width:900px){
@@ -206,7 +207,7 @@ p{color:var(--muted)}
   .section{padding-block:52px}.step-card{padding:24px 18px}.step-card h3{font-size:1.25rem}.step-card>p{min-height:96px;font-size:.85rem}.step-card .phone{width:150px}.wink{font-size:5.5rem;margin-top:42px}.chips{gap:6px}.chips span{font-size:.73rem;padding:7px 10px}.step-card .step-note{font-size:.8rem}
   .feature-wide{padding:26px;gap:24px;grid-column:span 6;min-height:0}.feature-wide .phone{width:160px}.feature-wide h3{font-size:2rem}.feature-wide p{max-width:320px}.feature-small{padding:24px 18px}.feature-small .phone{width:145px}.feature-small>div:first-child{min-height:188px}.feature-kicker{font-size:.63rem}
   .buddy-strip{flex-direction:column;gap:10px;text-align:center}.buddy-strip p{max-width:none}.buddy-strip div{font-size:1.5rem;word-spacing:2px}.privacy-card{gap:30px;padding:32px}.privacy-card h2{font-size:2.45rem}
-  .pricing-grid{gap:13px}.price-card{padding:34px 17px 22px}.price-pro{padding:33px 16px 21px}.price{font-size:2.05rem}.price span{font-size:.73rem}.plan-name{font-size:.9rem}.plan-description{min-height:66px}.check-list{font-size:.81rem}.price-card>.button{padding-inline:10px;font-size:.76rem}.plan-note{font-size:.7rem}
+  .pricing-grid{gap:36px 13px}.price-card{padding:34px 17px 22px}.price-pro{padding:33px 16px 21px}.price{font-size:2.05rem}.price span{font-size:.73rem}.plan-name{font-size:.9rem}.plan-description{min-height:66px}.check-list{font-size:.81rem}.price-card>.button{padding-inline:10px;font-size:.76rem}.plan-note{font-size:.7rem}
   .faq-section{gap:32px}.faq-section h2{font-size:2.5rem}.footer-row{align-items:flex-start}.footer-row nav{gap:10px;justify-content:flex-end}
 }
 @media(max-width:620px){
@@ -217,13 +218,27 @@ p{color:var(--muted)}
   .steps{grid-template-columns:1fr;gap:16px}.step-card{padding:27px}.step-card h3{font-size:1.55rem}.step-number{margin-bottom:18px}.step-card>p{min-height:0;font-size:.95rem}.step-card .phone{width:180px;margin-top:25px}.step-middle{padding-bottom:35px}.wink{font-size:6.5rem;margin-top:20px}.chips span{font-size:.84rem;padding:8px 12px}.step-card .step-note{margin-top:22px;font-size:.9rem}
   .heading-left{text-align:center}.feature-grid{grid-template-columns:1fr;gap:16px}.feature-wide,.feature-small{grid-column:auto;display:block;padding:28px}.feature-wide h3{font-size:1.7rem}.feature-wide h3 br{display:none}.feature-kicker{font-size:.72rem}.feature-card p{font-size:.94rem}.feature-wide .phone,.feature-small .phone{width:180px;margin:26px auto 0}.feature-small h3{font-size:1.7rem}.feature-small>div:first-child{min-height:0}.buddy-strip{padding:22px 8px}.buddy-strip div{font-size:1.7rem;word-spacing:8px}.feature-footnote{font-size:.88rem}
   .video-section video{border-radius:24px}.video-caption{font-size:.8rem}.privacy-card{grid-template-columns:1fr;padding:28px;gap:32px}.privacy-intro .eyebrow{font-size:.68rem}.privacy-card h2{font-size:2.3rem}.privacy-points h3{font-size:1.15rem}.privacy-points p{font-size:.94rem}
-  .pricing-grid{grid-template-columns:1fr;gap:30px}.price-card{padding:32px 26px 26px}.price-pro{padding:31px 25px 25px}.plan-name{font-size:1rem}.price{font-size:2.8rem}.price span{font-size:.9rem}.plan-description{min-height:0;font-size:.95rem}.check-list{font-size:.94rem}.includes{font-size:.9rem}.price-card>.button{font-size:.92rem}.plan-note{font-size:.8rem}.pricing-notes{font-size:.82rem}.pricing-notes p+p{margin-top:16px}
+  .pricing-grid{grid-template-columns:1fr;gap:30px}.missed-demo{margin:26px auto 0;max-width:280px}.phone-pair{justify-content:center;margin-top:26px}.feature-pair .phone-pair .phone{width:calc(50% - 6px);max-width:160px;margin:0}.price-card{padding:32px 26px 26px}.price-pro{padding:31px 25px 25px}.plan-name{font-size:1rem}.price{font-size:2.8rem}.price span{font-size:.9rem}.plan-description{min-height:0;font-size:.95rem}.check-list{font-size:.94rem}.includes{font-size:.9rem}.price-card>.button{font-size:.92rem}.plan-note{font-size:.8rem}.pricing-notes{font-size:.82rem}.pricing-notes p+p{margin-top:16px}
   .faq-section{grid-template-columns:1fr;gap:28px}.faq-section h2{font-size:2.2rem}.faq-section>div:first-child{text-align:center}.faq-list summary{font-size:.95rem;min-height:72px}.final-cta{margin-block:28px 35px;padding-block:40px}.final-cta .eyebrow{font-size:.67rem}.final-cta h2{font-size:2.85rem}.final-cta img{width:64px;height:64px}
   .footer-row{flex-direction:column;gap:6px}.footer-row nav{justify-content:flex-start;gap:4px 18px}.trademark{font-size:.7rem;max-width:290px;line-height:1.7}
   .policy{padding-top:40px}.policy .summary,.policy section{padding:24px 20px}.policy table{font-size:.74rem;line-height:1.5}.policy th,.policy td{padding:10px 5px}.policy h2{font-size:1.4rem}.policy .meta{font-size:.78rem}.policy p,.policy li{font-size:.94rem}.policy .summary ul{padding-left:17px}.policy~.site-footer{padding-bottom:25px}
   .not-found{padding-block:45px}.not-found .eyebrow{font-size:.7rem}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.button:hover{transform:none}}
+
+/* October 2026 update: Basic plan pills, missed clock-out card, paired screenshots. */
+.new-pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:9999px;background:var(--mint);color:var(--ink);font-size:.68rem;letter-spacing:.05em;font-weight:700;line-height:1.5}
+.trial-pill{align-self:flex-start;margin-top:14px;padding:4px 11px;border-radius:9999px;background:var(--mint);color:var(--ink);font-size:.74rem;font-weight:700;line-height:1.45}
+.missed-demo{flex:0 0 220px;display:flex;flex-direction:column;gap:12px}
+.missed-row{display:flex;align-items:center;gap:10px;background:var(--cream);border-radius:20px;padding:14px;box-shadow:0 8px 20px rgba(28,27,31,.06)}
+.missed-buddy{font-size:2rem;line-height:1}
+.missed-name{flex:1;min-width:0;display:flex;flex-direction:column;font-size:.86rem;line-height:1.3;color:var(--ink)}
+.missed-name small{color:var(--muted);font-size:.72rem}
+.missed-row .status-missed{margin-top:0;padding-inline:9px}
+.missed-snack{display:flex;justify-content:space-between;gap:10px;background:var(--ink);color:var(--card);border-radius:14px;padding:12px 16px;font-size:.8rem}
+.missed-snack span:last-child{color:var(--mint);font-weight:700}
+.phone-pair{display:flex;gap:12px;flex-shrink:0}
+.feature-pair .phone-pair .phone{width:135px}
 
 /* Keep small text on mint above 4.5:1; the teal heading accent sits on cream. */
 .privacy-intro .eyebrow,.privacy-intro .text-link{color:var(--ink)}
